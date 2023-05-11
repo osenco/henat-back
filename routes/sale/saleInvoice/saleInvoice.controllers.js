@@ -10,6 +10,7 @@ const createSingleSaleInvoice = async (req, res) => {
       totalSalePrice +=
         parseFloat(item.product_sale_price) * parseFloat(item.product_quantity);
     });
+
     // get all product asynchronously
     const allProduct = await Promise.all(
       req.body.saleInvoiceProduct.map(async (item) => {
@@ -18,17 +19,21 @@ const createSingleSaleInvoice = async (req, res) => {
             id: item.product_id,
           },
         });
+
         return product;
       })
     );
+
     // iterate over all product and calculate total purchase price
     totalPurchasePrice = 0;
     req.body.saleInvoiceProduct.forEach((item, index) => {
       totalPurchasePrice +=
         allProduct[index].purchase_price * item.product_quantity;
     });
+
     // convert all incoming date to a specific format.
     const date = new Date(req.body.date).toISOString().split("T")[0];
+
     // create sale invoice
     const createdInvoice = await prisma.saleInvoice.create({
       data: {
@@ -61,12 +66,16 @@ const createSingleSaleInvoice = async (req, res) => {
                 id: Number(product.product_id),
               },
             },
+            boxes: Number(product.boxes),
+            length: Number(product.measure),
+            pack_rate: Number(product.pack_rate),
             product_quantity: Number(product.product_quantity),
             product_sale_price: parseFloat(product.product_sale_price),
           })),
         },
       },
     });
+
     // new transactions will be created as journal entry for paid amount
     if (req.body.paid_amount > 0) {
       await prisma.transaction.create({

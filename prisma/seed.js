@@ -107,11 +107,11 @@ const subAccount = [
 ];
 
 const settings = {
-  company_name: "My Company",
+  company_name: "Henat Flowers",
   address: "My Address",
   phone: "My Phone",
-  email: "My Email",
-  website: "My Website",
+  email: "info@henatflowers.com",
+  website: "https://henatflowers.com",
   footer: "My Footer",
   tag_line: "My Tag Line",
 };

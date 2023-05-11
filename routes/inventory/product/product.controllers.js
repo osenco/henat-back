@@ -35,6 +35,7 @@ const createSingleProduct = async (req, res) => {
         return {
           name: item.name,
           quantity: parseInt(item.quantity),
+          pack_rate: parseInt(item.pack_rate),
           purchase_price: parseFloat(item.purchase_price),
           sale_price: parseFloat(item.sale_price),
           product_sub_category_id: parseInt(item.product_sub_category_id),
@@ -75,6 +76,7 @@ const createSingleProduct = async (req, res) => {
         data: {
           name: req.body.name,
           quantity: parseInt(req.body.quantity),
+          pack_rate: parseInt(req.body.pack_rate),
           purchase_price: parseFloat(req.body.purchase_price),
           sale_price: parseFloat(req.body.sale_price),
           thumbnail_image: file.filename,
@@ -326,6 +328,7 @@ const updateSingleProduct = async (req, res) => {
       data: {
         name: req.body.name,
         quantity: parseInt(req.body.quantity),
+        pack_rate: parseInt(req.body.pack_rate),
         purchase_price: parseFloat(req.body.purchase_price),
         sale_price: parseFloat(req.body.sale_price),
       },
