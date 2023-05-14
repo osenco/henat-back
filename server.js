@@ -8,15 +8,15 @@ console.log(process.env.NODE_ENV);
 
 // run server depending on environment
 if (process.env.NODE_ENV === "production") {
-  https
-    .createServer(
-      {
-        key: fs.readFileSync("/etc/letsencrypt/live/lfix.us/privkey.pem"),
-        cert: fs.readFileSync("/etc/letsencrypt/live/lfix.us/fullchain.pem"),
-      },
-      app
-    )
-    .listen(PORT, () => {
+  // https
+  //   .createServer(
+  //     {
+  //       key: fs.readFileSync("/etc/letsencrypt/live/lfix.us/privkey.pem"),
+  //       cert: fs.readFileSync("/etc/letsencrypt/live/lfix.us/fullchain.pem"),
+  //     },
+  //     app
+  //   )
+    app.listen(PORT, () => {
       console.log(`Server is running on production port ${PORT}`);
     });
 } else {
