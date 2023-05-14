@@ -1,5 +1,5 @@
 {
-  "name": "inventoryosb",
+  "name": "@henat/api",
   "version": "1.0.0",
   "description": "inventory os backend",
   "main": "server.js",
