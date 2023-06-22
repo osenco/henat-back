@@ -3,6 +3,7 @@ const {
   createSingleSaleInvoice,
   getAllSaleInvoice,
   getSingleSaleInvoice,
+  updateSingleSaleInvoice
 } = require("./saleInvoice.controllers");
 const authorize = require("../../../utils/authorize"); // authentication middleware
 
@@ -18,6 +19,11 @@ saleInvoiceRoutes.get(
   "/:id",
   authorize("viewSaleInvoice"),
   getSingleSaleInvoice
+);
+saleInvoiceRoutes.put(
+  "/:id",
+  authorize("createSaleInvoice"),
+  updateSingleSaleInvoice
 );
 
 module.exports = saleInvoiceRoutes;

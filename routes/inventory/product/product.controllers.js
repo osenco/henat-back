@@ -327,6 +327,7 @@ const updateSingleProduct = async (req, res) => {
       },
       data: {
         name: req.body.name,
+        status: parseInt(req.body.status),
         quantity: parseInt(req.body.quantity),
         pack_rate: parseInt(req.body.pack_rate),
         purchase_price: parseFloat(req.body.purchase_price),
